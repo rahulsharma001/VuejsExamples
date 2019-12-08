@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .is-red{
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+        <ul>
+            <li v-for='name in names' v-text='name'>
+            </li>
+        </ul>
+        <input type="text" name="test" id="test" v-model="newName" />
+        <button v-on:click='addName' :class="{'is-red':className}" :title="title">Add Name</button>
+        <!-- {{message}} -->
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        // function addName() {
+        //     app.names.push(this.newName);
+        //     app.newName = '';
+        // }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello world',
+                names: ['Rahul', 'Ravi', 'Raju'],
+                newName: '',
+                title: 'Click me to add name',
+                className:false
+            },
+            methods: {
+                addName() {
+                    this.names.push(this.newName);
+                    this.newName = '';
+                    this.title = 'I got changed';
+                    this.className=true;
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>
